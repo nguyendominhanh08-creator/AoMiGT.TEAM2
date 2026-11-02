@@ -182,16 +182,16 @@ else:
                        "so optimal play requires mixed strategies (Minimax Theorem).")
 
         # --- Step 2: dominance
-        with st.expander("Step 2 · Elimination of strictly dominated strategies"):
-            for line in rep.dominance["steps"]:
-                st.write("• " + line)
-            red = rep.dominance["reduced"]
-            st.write(f"Reduced matrix ({red.shape[0]} × {red.shape[1]}):")
-            st.dataframe(pd.DataFrame(
-                red,
-                index=[row_names[i] for i in rep.dominance["row_idx"]],
-                columns=[col_names[j] for j in rep.dominance["col_idx"]],
-            ))
+        st.markdown("#### Step 2 · Elimination of strictly dominated strategies")
+        for line in rep.dominance["steps"]:
+            st.write("• " + line)
+        red = rep.dominance["reduced"]
+        st.write(f"Reduced matrix ({red.shape[0]} × {red.shape[1]}):")
+        st.dataframe(pd.DataFrame(
+            red,
+            index=[row_names[i] for i in rep.dominance["row_idx"]],
+            columns=[col_names[j] for j in rep.dominance["col_idx"]],
+        ))
 
         # --- Step 3: solution
         st.markdown("#### Step 3 · Optimal strategies")
